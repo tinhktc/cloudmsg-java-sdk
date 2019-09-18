@@ -102,7 +102,7 @@ The structure of the class *PushMessageCreateResultDto*
 
 |Property Name|Type|Description|
 |:---|:---|:---|
-|name|String|The identify of the message|
+|msgIdentifier|String|The identify of the message|
 
 
 
