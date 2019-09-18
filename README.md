@@ -222,12 +222,12 @@ if(result.getData()!=null) {
 ```  
 public Result<QueryArriveRateDto> queryArriveRate(String messageIdentifier)
 ```
-This API is used to query the message arrived terminal number. The parameter messageIdentifier is returned after created message success. The effective time of the message is 24 hours, and query the message arrived terminal number when message is still effective is not allowed. The structure of QueryArriveRateDto like below
+This API is used to query the message arrive terminal number. The parameter messageIdentifier is returned after created message success. The effective time of the message is 24 hours, and query the message arrived terminal number when message is still effective is not allowed. The structure of QueryArriveRateDto like below
 
 |Property Name|Type|Description|
 |:---|:---|:---|
 |arrivedNumber|Integer|The number of terminal of the message arrived|
-|arrivedRate|String|The percetage of the arrived terminal number|
+|arrivedRate|String|The percentage of the arrived terminal number|
 
 ##### Sample Code
 
