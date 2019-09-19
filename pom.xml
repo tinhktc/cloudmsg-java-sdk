@@ -16,8 +16,8 @@
     <modelVersion>4.0.0</modelVersion>
 	<groupId>com.pax.market</groupId>
     <artifactId>paxstore-cloudmsg-java-sdk</artifactId>
-	<version>6.3.1</version>
-    <name>PAX Market :: CloudMsg Java SDK</name>
+	<version>6.3.0</version>
+    <name>PAX :: CloudMessage Java SDK</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -126,16 +126,13 @@
 		<url>scm:git:https://gitlab.paxszapp.com/paxvas/paxvas-message-sdk.git</url>
 	</scm>
     
-    <distributionManagement>
+	
+	<distributionManagement>
 		<repository>
-			<id>pax.nexus.internal</id>
-			<url>http://nexus.paxszapp.com/nexus/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>pax.nexus.snapshots</id>
-			<url>http://nexus.paxszapp.com/nexus/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
+		    <id>bintray</id>
+		    <url>https://api.bintray.com/maven/paxstore-support/paxstore/paxstore-cloudmsg-java-sdk/;publish=1</url>
+	    </repository>
+    </distributionManagement>
 	
 	<repositories>
 		<repository>
