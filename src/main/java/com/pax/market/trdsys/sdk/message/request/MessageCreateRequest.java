@@ -35,6 +35,8 @@ public class MessageCreateRequest implements Serializable{
 	private String[] serialNos;
 	
 	private MsgContent content;
+
+	private boolean sendToSandboxTerminal = false;
 	
 	
 	public MessageCreateRequest() {
@@ -66,6 +68,11 @@ public class MessageCreateRequest implements Serializable{
 		this.content = content;
 	}
 
-	
+	public boolean isSendToSandboxTerminal() {
+		return sendToSandboxTerminal;
+	}
 
+	public void setSendToSandboxTerminal(boolean sendToSandboxTerminal) {
+		this.sendToSandboxTerminal = sendToSandboxTerminal;
+	}
 }
