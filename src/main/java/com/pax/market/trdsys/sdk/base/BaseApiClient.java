@@ -56,7 +56,7 @@ public class BaseApiClient {
     /**
      * The Read timeout.
      */
-    protected int readTimeout = 5000;
+    protected int readTimeout = 15000;
     
     private boolean signRequestBody = true;
     
