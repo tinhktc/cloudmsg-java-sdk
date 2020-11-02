@@ -49,10 +49,10 @@ public class TestMain {
 		notification.setContent("This is content of notification");
 		msgContent.setNotification(notification);
 		request.setContent(msgContent);
-		request.setSerialNos(new String[]{"sn00001", "sn00002"});
+		request.setSerialNos(new String[]{"sn00001", "0820534734", "1170128227"});
 		Result<PushMessageCreateResultDto> result = getMessageApi().createPushMessage(request);
 		if(result.getData()!=null) {
-			System.out.println(result.getData().getMsgIdentifier());
+			System.out.println(result);
 		}
 		Assert.assertNotNull(result.getData());
 		Assert.assertEquals(result.getBusinessCode(), 0);

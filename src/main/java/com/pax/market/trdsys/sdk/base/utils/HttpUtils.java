@@ -12,6 +12,8 @@
 package com.pax.market.trdsys.sdk.base.utils;
 
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.pax.market.trdsys.sdk.base.constant.Constants;
 import com.pax.market.trdsys.sdk.base.constant.ResultCode;
 import com.pax.market.trdsys.sdk.base.utils.alg.AlgHelper;
@@ -41,6 +43,7 @@ public abstract class HttpUtils {
 	private static final int BUFFER_SIZE = 4096;
 	private static final String DEFAULT_CHARSET = Constants.CHARSET_UTF8;
 	private static Locale locale = Locale.CHINA;
+	private static JsonParser jsonParser = new JsonParser();
 
     /**
      * Sets local.
@@ -170,6 +173,11 @@ public abstract class HttpUtils {
 			} else {
 				urlConnection.setDoOutput(true);
 			}
+
+			String rateLimit = "";
+			String rateLimitRemain = "";
+			String rateLimitReset = "";
+
 			if ((null != userData) && (userData.length() > 0)) {
 				OutputStream outputStream = null;
 				try {
@@ -180,6 +188,10 @@ public abstract class HttpUtils {
 						String hexString = AlgHelper.bytes2HexString(compressData(userData.getBytes("UTF-8")));
 						outputStream.write(hexString.getBytes());
 					}
+					Map<String, List<String>> map = urlConnection.getHeaderFields();
+					rateLimit = map.get("X-RateLimit-Limit")==null?"":map.get("X-RateLimit-Limit").get(0);
+					rateLimitRemain = map.get("X-RateLimit-Remaining")==null?"":map.get("X-RateLimit-Remaining").get(0);
+					rateLimitReset = map.get("X-RateLimit-Reset")==null?"":map.get("X-RateLimit-Reset").get(0);
 				} finally {
 					if (outputStream != null) {
 						outputStream.close();
@@ -206,6 +218,13 @@ public abstract class HttpUtils {
 
 				return JsonUtils.getSdkJson(ResultCode.SUCCESS, filePath);
 			}
+			Map<String, List<String>> map = urlConnection.getHeaderFields();
+
+			rateLimit = map.get("X-RateLimit-Limit")==null?"":map.get("X-RateLimit-Limit").get(0);
+			rateLimitRemain = map.get("X-RateLimit-Remaining")==null?"":map.get("X-RateLimit-Remaining").get(0);
+			rateLimitReset = map.get("X-RateLimit-Reset")==null?"":map.get("X-RateLimit-Reset").get(0);
+			List<String> contentTypeHeaders = map.get("Content-Type");
+			String contentType = contentTypeHeaders!=null && contentTypeHeaders.size()>0?contentTypeHeaders.get(0):"";
 
 			if (urlConnection.getResponseCode() == 200 || urlConnection.getResponseCode() == 201
 					|| urlConnection.getResponseCode() == 204) {
@@ -222,21 +241,16 @@ public abstract class HttpUtils {
 			while ((str = bufferedReader.readLine()) != null) {
 				stringBuilder.append(str);
 			}
-
-			return stringBuilder.toString();
-			
-//			if(urlConnection.getResponseCode() == 200) {
-//				return stringBuilder.toString();
-//			} else {
-//				if((urlConnection.getResponseCode() == 201 && requestMethod.equals(RequestMethod.POST.getValue()))
-//					|| (urlConnection.getResponseCode() == 204 && requestMethod.equals(RequestMethod.PUT.getValue()))) {
-//					//nothing todo
-//					return stringBuilder.toString();
-//				}else {
-//					return JsonUtils.getSdkJson(urlConnection.getResponseCode(), stringBuilder.toString());
-//				}
-//				
-//			}
+			String resultStr = stringBuilder.toString();
+			if(contentType == null || !contentType.toLowerCase().contains("json")) {
+				logger.error(resultStr);
+				return JsonUtils.getSdkJson(ResultCode.SDK_RQUEST_EXCEPTION);
+			}
+			JsonObject json = jsonParser.parse(resultStr).getAsJsonObject();
+			json.addProperty("rateLimit", rateLimit);
+			json.addProperty("rateLimitRemain", rateLimitRemain);
+			json.addProperty("rateLimitReset", rateLimitReset);
+			return json.toString();
 		} catch (SocketTimeoutException localSocketTimeoutException) {
 			FileUtils.deleteFile(filePath);
 			logger.error("SocketTimeoutException Occurred. Details: {}", localSocketTimeoutException.toString());

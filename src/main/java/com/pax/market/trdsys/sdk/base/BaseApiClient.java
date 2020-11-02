@@ -52,24 +52,23 @@ public class BaseApiClient {
     /**
      * The Connect timeout.
      */
-    protected int connectTimeout = 30000000; 			// 默认连接超时时间为30秒
+    protected int connectTimeout = 5000;
     /**
      * The Read timeout.
      */
-    protected int readTimeout = 30000; 				// 默认响应超时时间为30秒
+    protected int readTimeout = 5000;
     
     private boolean signRequestBody = true;
     
     private String signatureHeaderName = Constants.SIGNATURE;
-    
-    private String sdkVersion;
+
 
     /**
      * Instantiates a new Default client.
      *
      * @param baseUrl   the base url
-     * @param appKey    the app key
-     * @param appSecret the app secret
+     * @param apiKey    the app key
+     * @param apiSecret the app secret
      */
     public BaseApiClient(String baseUrl, String apiKey, String apiSecret) {
 		this.apiKey = apiKey;
@@ -86,8 +85,8 @@ public class BaseApiClient {
      * Instantiates a new Default client.
      *
      * @param baseUrl        the base url
-     * @param appKey         the app key
-     * @param appSecret      the app secret
+     * @param apiKey         the app key
+     * @param apiSecret      the app secret
      * @param connectTimeout the connect timeout
      * @param readTimeout    the read timeout
      */
@@ -122,7 +121,7 @@ public class BaseApiClient {
      */
     protected String execute(SdkRequest request) {
     	request.addHeader(Constants.REQ_HEADER_SDK_LANG, Constants.THIRD_PARTY_API_SDK_LANGUAGE);
-    	request.addHeader(Constants.REQ_HEADER_SDK_VERSION, sdkVersion);
+    	request.addHeader(Constants.REQ_HEADER_SDK_VERSION, Constants.THIRD_PARTY_API_SDK_VERSION);
 		try {
 			return _execute(request);
 		} catch (IOException e) {
