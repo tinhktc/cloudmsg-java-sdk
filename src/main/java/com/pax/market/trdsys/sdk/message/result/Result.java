@@ -27,6 +27,10 @@ public class Result <T extends Serializable> implements Serializable{
 	private String message;
 	private List<String> validationErrors;
 	private T data;
+
+	private String rateLimit;
+	private String rateLimitRemain;
+	private String rateLimitReset;
 	
 	public Result() {
 		
@@ -41,12 +45,22 @@ public class Result <T extends Serializable> implements Serializable{
 		this.businessCode = baseResponse.getBusinessCode();
 		this.message = baseResponse.getMessage();
 		this.data = data;
+		this.rateLimit = baseResponse.getRateLimit();
+		this.rateLimitRemain = baseResponse.getRateLimitRemain();
+		this.rateLimitReset = baseResponse.getRateLimitReset();
 	}
 
 	@Override
 	public String toString() {
-		return "Result [businessCode=" + businessCode + ", message=" + message + ", validationErrors="
-				+ validationErrors + ", data=" + data + "]";
+		return "Result{" +
+				"businessCode=" + businessCode +
+				", message='" + message + '\'' +
+				", validationErrors=" + validationErrors +
+				", data=" + data +
+				", rateLimit='" + rateLimit + '\'' +
+				", rateLimitRemain='" + rateLimitRemain + '\'' +
+				", rateLimitReset='" + rateLimitReset + '\'' +
+				'}';
 	}
 
 	public int getBusinessCode() {
@@ -80,9 +94,28 @@ public class Result <T extends Serializable> implements Serializable{
 	public void setData(T data) {
 		this.data = data;
 	}
-	
-	
-	
-	
 
+	public String getRateLimit() {
+		return rateLimit;
+	}
+
+	public void setRateLimit(String rateLimit) {
+		this.rateLimit = rateLimit;
+	}
+
+	public String getRateLimitRemain() {
+		return rateLimitRemain;
+	}
+
+	public void setRateLimitRemain(String rateLimitRemain) {
+		this.rateLimitRemain = rateLimitRemain;
+	}
+
+	public String getRateLimitReset() {
+		return rateLimitReset;
+	}
+
+	public void setRateLimitReset(String rateLimitReset) {
+		this.rateLimitReset = rateLimitReset;
+	}
 }

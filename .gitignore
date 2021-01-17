@@ -25,3 +25,6 @@ hs_err_pid*
 /.classpath
 /.project
 /.settings/*.prefs
+/E:/logs/log.txt
+.idea/workspace.xml
+E:/logs/log.txt

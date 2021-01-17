@@ -49,9 +49,11 @@ public class TestMain {
 		notification.setContent("This is content of notification");
 		msgContent.setNotification(notification);
 		request.setContent(msgContent);
-		request.setSerialNos(new String[]{"sn00001", "sn00002"});
+		request.setSerialNos(new String[]{"0820733289","1170258390"});
+		request.setSendToSandboxTerminal(true);
 		Result<PushMessageCreateResultDto> result = getMessageApi().createPushMessage(request);
 		if(result.getData()!=null) {
+			System.out.println(result);
 			System.out.println(result.getData().getMsgIdentifier());
 		}
 		Assert.assertNotNull(result.getData());
@@ -159,8 +161,11 @@ public class TestMain {
 	public void testQueryArriveRate(){
 		Result<QueryArriveRateDto> result = getMessageApi().queryArriveRate("b8ddeca556dd4f25b1a1143a3f5e8855");
 		if(result.getBusinessCode() == 0) {
+			System.out.println(result);
 			System.out.println(result.getData().getArrivedNumber());
 			System.out.println(result.getData().getArrivedRate());
+		}else{
+			System.out.println(result);
 		}
 	}
 
