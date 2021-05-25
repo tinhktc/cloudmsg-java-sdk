@@ -121,51 +121,10 @@
     </build>
 	
 	<scm>
-		<connection>scm:git:https://gitlab.paxszapp.com/paxvas/paxvas-message-sdk.git</connection>
-		<developerConnection>scm:git:https://gitlab.paxszapp.com/paxvas/paxvas-message-sdk.git</developerConnection>
-		<url>scm:git:https://gitlab.paxszapp.com/paxvas/paxvas-message-sdk.git</url>
-	  <tag>paxstore-cloudmsg-java-sdk-7.4</tag>
-  </scm>
-    
-	
-	<distributionManagement>
-		<repository>
-		    <id>bintray</id>
-		    <url>https://api.bintray.com/maven/paxstore-support/paxstore/paxstore-cloudmsg-java-sdk/;publish=1</url>
-	    </repository>
-    </distributionManagement>
-	
-	<repositories>
-		<repository>
-			<id>pax</id>
-			<name>Pax Maven Repository</name>
-			<layout>default</layout>
-			<url>http://nexus.paxszapp.com/nexus/repository/maven-public/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>pax-snapshot</id>
-			<name>Pax Maven SNAPSHOT Repository</name>
-			<layout>default</layout>
-			<url>http://nexus.paxszapp.com/nexus/repository/maven-snapshots/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
+		<connection>scm:git:https://github.com/PAXSTORE/cloudmsg-java-sdk.git</connection>
+		<developerConnection>scm:git:https://github.com/PAXSTORE/cloudmsg-java-sdk.git</developerConnection>
+		<url>scm:git:https://github.com/PAXSTORE/cloudmsg-java-sdk.git</url>
+	    <tag>7.4</tag>
+   </scm>
 
-	</repositories>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>pax</id>
-			<name>Pax Maven Repository</name>
-			<layout>default</layout>
-			<url>http://nexus.paxszapp.com/nexus/repository/maven-public/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
