@@ -26,7 +26,7 @@ There are some preconditions before using Cloud Message service.
 * App supports Cloud Message (Integrate with latest paxstore-3rd-app-android-sdk and claim this app support Cloud Message service when upload in PAXSTORE developer center)
 
 * Cloud Message servie enabled by marketplace administrator at app level in app detail page
-![](/doc/asserts/app_detail.png)
+
 * Terminal has installed the latest PAXSTORE client
 
 
@@ -34,14 +34,14 @@ There are some preconditions before using Cloud Message service.
 
 ### Integrate with SDK
 
-Update maven's settings.xml add a new repository https://dl.bintray.com/paxstore-support/paxstore/  
+Update maven's settings.xml add a new repository https://jitpack.io  
 Update pom.xml add SDK dependency for maven project.
 
 ```
 <dependency>
     <groupId>com.pax.market</groupId>
     <artifactId>paxstore-cloudmsg-java-sdk</artifactId>
-    <version>6.0.2</version>
+    <version>6.3.0</version>
 </dependency>
 ```
 
