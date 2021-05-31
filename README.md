@@ -34,14 +34,13 @@ There are some preconditions before using Cloud Message service.
 
 ### Integrate with SDK
 
-Update maven's settings.xml add a new repository https://jitpack.io  
 Update pom.xml add SDK dependency for maven project.
 
 ```
 <dependency>
-    <groupId>com.pax.market</groupId>
-    <artifactId>paxstore-cloudmsg-java-sdk</artifactId>
-    <version>7.4</version>
+    <groupId>com.whatspos.sdk</groupId>
+    <artifactId>3rdsys-cloudmsg</artifactId>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -50,7 +49,7 @@ Update pom.xml add SDK dependency for maven project.
 Initialize the API using the constructor like this.  
 ```
 CloudMessageServiceApi api = new CloudMessageServiceApi("https://api.whatspos.com/p-market-api", "appkey", "appsecret");
-```  
+```
 Please use the correct app key and secret.
 
 All the api in the class CloudMessageServiceApi returns a unified result *com.pax.market.trdsys.sdk.message.result.Result*
@@ -166,7 +165,7 @@ Result<PushMessageCreateResultDto> result = getMessageApi().createPushMessage(re
 if(result.getData()!=null) {
 	System.out.println(result.getData().getMsgIdentifier());
 }
-```  
+```
 
 * Send mix type message to terminal sn00001,sn00002 and print the msgIdentify if success  
 ```  
@@ -191,13 +190,13 @@ Result<PushMessageCreateResultDto> result = getMessageApi().createPushMessage(re
 if(result.getData()!=null) {
 	System.out.println(result.getData().getMsgIdentifier());
 }
-```  
+```
 
 
 **Possible client validation errors**
 > <font color=red>Parameter createRequest is mandatory!</font>  
 > <font color=red>Parameter serialNos's max size is 1000!</font>  
- 
+
 
 **Possible business codes**
 
@@ -267,13 +266,13 @@ if(result.getBusinessCode() == 0) {
 See the [Apache 2.0 license](LICENSE) file for details.
 
     Copyright 2018 PAX Computer Technology(Shenzhen) CO., LTD ("PAX")
-
+    
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at following link.
-
+    
          http://www.apache.org/licenses/LICENSE-2.0
-
+    
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
