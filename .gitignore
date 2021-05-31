@@ -28,3 +28,6 @@ hs_err_pid*
 /E:/logs/log.txt
 .idea/workspace.xml
 E:/logs/log.txt
+/3rdsys-cloudmsg.iml
+/.idea
+/.DS_Store
