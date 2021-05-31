@@ -26,7 +26,7 @@ There are some preconditions before using Cloud Message service.
 * App supports Cloud Message (Integrate with latest paxstore-3rd-app-android-sdk and claim this app support Cloud Message service when upload in PAXSTORE developer center)
 
 * Cloud Message servie enabled by marketplace administrator at app level in app detail page
-![](/doc/asserts/app_detail.png)
+
 * Terminal has installed the latest PAXSTORE client
 
 
