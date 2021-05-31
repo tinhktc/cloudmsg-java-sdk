@@ -34,14 +34,13 @@ There are some preconditions before using Cloud Message service.
 
 ### Integrate with SDK
 
-Update maven's settings.xml add a new repository https://jitpack.io  
 Update pom.xml add SDK dependency for maven project.
 
 ```
 <dependency>
-    <groupId>com.pax.market</groupId>
-    <artifactId>paxstore-cloudmsg-java-sdk</artifactId>
-    <version>6.3.0</version>
+    <groupId>com.whatspos.sdk</groupId>
+    <artifactId>3rdsys-cloudmsg</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
