@@ -13,11 +13,12 @@ package com.pax.market.trdsys.sdk.base.utils;
 
 import com.google.gson.Gson;
 import com.pax.market.trdsys.sdk.base.constant.ResultCode;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author tanjie
@@ -130,14 +131,12 @@ public class JsonUtils {
      * @return the sdk json
      */
     public static String getSdkJson(int resultCode, String message) {
-    	JSONObject jsonObj = new JSONObject();
-    	jsonObj.put("businessCode", resultCode);
-    	jsonObj.put("message", message);
-//        SdkObject sdkObject = new SdkObject();
-//        sdkObject.setBusinessCode(resultCode);
-//        sdkObject.setMessage(message);
-//        return toJson(sdkObject);
-//    	return toJson(jsonObj);
-    	return jsonObj.toString();
+
+    	Map<String, Object> result = new HashMap<String, Object>();
+        result.put("businessCode", resultCode);
+        result.put("message", message);
+        return toJson(result);
     }
+
+
 }

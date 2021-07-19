@@ -25,22 +25,25 @@ import java.io.Serializable;
 public class MessageCreateRequest implements Serializable{
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 81643576327525513L;
-	
+
 	private int msgType;
-	
-	@NotEmpty
+
+
 	private String[] serialNos;
-	
+
+	private String[] tids;
+
 	private MsgContent content;
 
 	private boolean sendToSandboxTerminal = false;
-	
-	
+
+	private boolean sendByTid = false;
+
 	public MessageCreateRequest() {
-		
+
 	}
 
 	public String[] getSerialNos() {
@@ -55,7 +58,7 @@ public class MessageCreateRequest implements Serializable{
 		return msgType;
 	}
 
-	
+
 	public void setMsgType(MsgType msgType) {
 		this.msgType = msgType.val();
 	}
@@ -74,5 +77,21 @@ public class MessageCreateRequest implements Serializable{
 
 	public void setSendToSandboxTerminal(boolean sendToSandboxTerminal) {
 		this.sendToSandboxTerminal = sendToSandboxTerminal;
+	}
+
+	public String[] getTids() {
+		return tids;
+	}
+
+	public void setTids(String[] tids) {
+		this.tids = tids;
+	}
+
+	public boolean isSendByTid() {
+		return sendByTid;
+	}
+
+	public void setSendByTid(boolean sendByTid) {
+		this.sendByTid = sendByTid;
 	}
 }
